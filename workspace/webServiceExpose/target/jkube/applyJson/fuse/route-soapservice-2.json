@@ -1,0 +1,84 @@
+{
+  "apiVersion" : "route.openshift.io/v1",
+  "kind" : "Route",
+  "metadata" : {
+    "creationTimestamp" : "2023-02-03T10:50:00Z",
+    "labels" : {
+      "app" : "soapService",
+      "group" : "org.mycompany",
+      "provider" : "jkube",
+      "version" : "1.0.0-SNAPSHOT"
+    },
+    "managedFields" : [ {
+      "apiVersion" : "route.openshift.io/v1",
+      "fieldsType" : "FieldsV1",
+      "fieldsV1" : {
+        "f:metadata" : {
+          "f:labels" : {
+            "." : { },
+            "f:app" : { },
+            "f:group" : { },
+            "f:provider" : { },
+            "f:version" : { }
+          }
+        },
+        "f:spec" : {
+          "f:port" : {
+            "." : { },
+            "f:targetPort" : { }
+          },
+          "f:to" : {
+            "f:kind" : { },
+            "f:name" : { },
+            "f:weight" : { }
+          },
+          "f:wildcardPolicy" : { }
+        }
+      },
+      "manager" : "okhttp",
+      "operation" : "Update",
+      "time" : "2023-02-03T10:50:00Z"
+    }, {
+      "apiVersion" : "route.openshift.io/v1",
+      "fieldsType" : "FieldsV1",
+      "fieldsV1" : {
+        "f:status" : {
+          "f:ingress" : { }
+        }
+      },
+      "manager" : "openshift-router",
+      "operation" : "Update",
+      "time" : "2023-02-03T10:50:00Z",
+      "subresource" : "status"
+    } ],
+    "name" : "soapservice",
+    "namespace" : "fuse",
+    "resourceVersion" : "388246",
+    "uid" : "b3eec4f5-83a7-44a0-82ec-79ba77f4ca52"
+  },
+  "spec" : {
+    "host" : "soapservice-fuse.apps.cluster-vnnc5.vnnc5.sandbox725.opentlc.com",
+    "port" : {
+      "targetPort" : 8080
+    },
+    "to" : {
+      "kind" : "Service",
+      "name" : "soapservice",
+      "weight" : 100
+    },
+    "wildcardPolicy" : "None"
+  },
+  "status" : {
+    "ingress" : [ {
+      "conditions" : [ {
+        "lastTransitionTime" : "2023-02-03T10:50:00Z",
+        "status" : "True",
+        "type" : "Admitted"
+      } ],
+      "host" : "soapservice-fuse.apps.cluster-vnnc5.vnnc5.sandbox725.opentlc.com",
+      "routerCanonicalHostname" : "router-default.apps.cluster-vnnc5.vnnc5.sandbox725.opentlc.com",
+      "routerName" : "default",
+      "wildcardPolicy" : "None"
+    } ]
+  }
+}

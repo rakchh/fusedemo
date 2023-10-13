@@ -1,0 +1,84 @@
+{
+  "apiVersion" : "route.openshift.io/v1",
+  "kind" : "Route",
+  "metadata" : {
+    "creationTimestamp" : "2023-03-30T09:50:50Z",
+    "labels" : {
+      "app" : "restCreateCustomer",
+      "group" : "org.mycompany",
+      "provider" : "jkube",
+      "version" : "1.0.0-SNAPSHOT"
+    },
+    "managedFields" : [ {
+      "apiVersion" : "route.openshift.io/v1",
+      "fieldsType" : "FieldsV1",
+      "fieldsV1" : {
+        "f:metadata" : {
+          "f:labels" : {
+            "." : { },
+            "f:app" : { },
+            "f:group" : { },
+            "f:provider" : { },
+            "f:version" : { }
+          }
+        },
+        "f:spec" : {
+          "f:port" : {
+            "." : { },
+            "f:targetPort" : { }
+          },
+          "f:to" : {
+            "f:kind" : { },
+            "f:name" : { },
+            "f:weight" : { }
+          },
+          "f:wildcardPolicy" : { }
+        }
+      },
+      "manager" : "okhttp",
+      "operation" : "Update",
+      "time" : "2023-03-30T09:50:50Z"
+    }, {
+      "apiVersion" : "route.openshift.io/v1",
+      "fieldsType" : "FieldsV1",
+      "fieldsV1" : {
+        "f:status" : {
+          "f:ingress" : { }
+        }
+      },
+      "manager" : "openshift-router",
+      "operation" : "Update",
+      "time" : "2023-03-30T09:50:50Z",
+      "subresource" : "status"
+    } ],
+    "name" : "restcreatecustomer",
+    "namespace" : "rchhabri-dev",
+    "resourceVersion" : "547303271",
+    "uid" : "c143d11c-2214-421b-b047-68b795c599f6"
+  },
+  "spec" : {
+    "host" : "restcreatecustomer-rchhabri-dev.apps.sandbox-m3.1530.p1.openshiftapps.com",
+    "port" : {
+      "targetPort" : 8080
+    },
+    "to" : {
+      "kind" : "Service",
+      "name" : "restcreatecustomer",
+      "weight" : 100
+    },
+    "wildcardPolicy" : "None"
+  },
+  "status" : {
+    "ingress" : [ {
+      "conditions" : [ {
+        "lastTransitionTime" : "2023-03-30T09:50:50Z",
+        "status" : "True",
+        "type" : "Admitted"
+      } ],
+      "host" : "restcreatecustomer-rchhabri-dev.apps.sandbox-m3.1530.p1.openshiftapps.com",
+      "routerCanonicalHostname" : "router-default.apps.sandbox-m3.1530.p1.openshiftapps.com",
+      "routerName" : "default",
+      "wildcardPolicy" : "None"
+    } ]
+  }
+}

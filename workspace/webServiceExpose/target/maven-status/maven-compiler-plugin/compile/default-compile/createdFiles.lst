@@ -1,0 +1,9 @@
+org/example/createcustomer_wsdl/CreateCustomerEndpoint.class
+org/example/createcustomer_wsdl/ObjectFactory.class
+org/example/createcustomer_wsdl/CreateCustomerResponse.class
+org/mycompany/CreateCustomerProcessor.class
+org/example/createcustomer_wsdl/CreateCustomerServiceImpl.class
+org/example/createcustomer_wsdl/CreateCustomerRequest.class
+org/example/createcustomer_wsdl/package-info.class
+org/mycompany/Application.class
+org/example/createcustomer_wsdl/CreateCustomerEndpointService.class

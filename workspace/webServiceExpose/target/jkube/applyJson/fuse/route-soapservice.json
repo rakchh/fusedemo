@@ -1,0 +1,84 @@
+{
+  "apiVersion" : "route.openshift.io/v1",
+  "kind" : "Route",
+  "metadata" : {
+    "creationTimestamp" : "2023-01-05T07:32:56Z",
+    "labels" : {
+      "app" : "soapService",
+      "group" : "org.mycompany",
+      "provider" : "jkube",
+      "version" : "1.0.0-SNAPSHOT"
+    },
+    "managedFields" : [ {
+      "apiVersion" : "route.openshift.io/v1",
+      "fieldsType" : "FieldsV1",
+      "fieldsV1" : {
+        "f:metadata" : {
+          "f:labels" : {
+            "." : { },
+            "f:app" : { },
+            "f:group" : { },
+            "f:provider" : { },
+            "f:version" : { }
+          }
+        },
+        "f:spec" : {
+          "f:port" : {
+            "." : { },
+            "f:targetPort" : { }
+          },
+          "f:to" : {
+            "f:kind" : { },
+            "f:name" : { },
+            "f:weight" : { }
+          },
+          "f:wildcardPolicy" : { }
+        }
+      },
+      "manager" : "okhttp",
+      "operation" : "Update",
+      "time" : "2023-01-05T07:32:56Z"
+    }, {
+      "apiVersion" : "route.openshift.io/v1",
+      "fieldsType" : "FieldsV1",
+      "fieldsV1" : {
+        "f:status" : {
+          "f:ingress" : { }
+        }
+      },
+      "manager" : "openshift-router",
+      "operation" : "Update",
+      "time" : "2023-01-05T07:32:56Z",
+      "subresource" : "status"
+    } ],
+    "name" : "soapservice",
+    "namespace" : "fuse",
+    "resourceVersion" : "87121",
+    "uid" : "c13d24f5-fd4d-4437-b7bc-6682bbeb2d10"
+  },
+  "spec" : {
+    "host" : "soapservice-fuse.apps.cluster-4xrmx.4xrmx.sandbox702.opentlc.com",
+    "port" : {
+      "targetPort" : 8080
+    },
+    "to" : {
+      "kind" : "Service",
+      "name" : "soapservice",
+      "weight" : 100
+    },
+    "wildcardPolicy" : "None"
+  },
+  "status" : {
+    "ingress" : [ {
+      "conditions" : [ {
+        "lastTransitionTime" : "2023-01-05T07:32:56Z",
+        "status" : "True",
+        "type" : "Admitted"
+      } ],
+      "host" : "soapservice-fuse.apps.cluster-4xrmx.4xrmx.sandbox702.opentlc.com",
+      "routerCanonicalHostname" : "router-default.apps.cluster-4xrmx.4xrmx.sandbox702.opentlc.com",
+      "routerName" : "default",
+      "wildcardPolicy" : "None"
+    } ]
+  }
+}

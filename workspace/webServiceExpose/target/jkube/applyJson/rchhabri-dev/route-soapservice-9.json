@@ -1,0 +1,84 @@
+{
+  "apiVersion" : "route.openshift.io/v1",
+  "kind" : "Route",
+  "metadata" : {
+    "creationTimestamp" : "2022-12-28T10:43:25Z",
+    "labels" : {
+      "app" : "soapService",
+      "group" : "org.mycompany",
+      "provider" : "jkube",
+      "version" : "1.0.0-SNAPSHOT"
+    },
+    "managedFields" : [ {
+      "apiVersion" : "route.openshift.io/v1",
+      "fieldsType" : "FieldsV1",
+      "fieldsV1" : {
+        "f:metadata" : {
+          "f:labels" : {
+            "." : { },
+            "f:app" : { },
+            "f:group" : { },
+            "f:provider" : { },
+            "f:version" : { }
+          }
+        },
+        "f:spec" : {
+          "f:port" : {
+            "." : { },
+            "f:targetPort" : { }
+          },
+          "f:to" : {
+            "f:kind" : { },
+            "f:name" : { },
+            "f:weight" : { }
+          },
+          "f:wildcardPolicy" : { }
+        }
+      },
+      "manager" : "okhttp",
+      "operation" : "Update",
+      "time" : "2022-12-28T10:43:25Z"
+    }, {
+      "apiVersion" : "route.openshift.io/v1",
+      "fieldsType" : "FieldsV1",
+      "fieldsV1" : {
+        "f:status" : {
+          "f:ingress" : { }
+        }
+      },
+      "manager" : "openshift-router",
+      "operation" : "Update",
+      "time" : "2022-12-28T10:43:25Z",
+      "subresource" : "status"
+    } ],
+    "name" : "soapservice",
+    "namespace" : "rchhabri-dev",
+    "resourceVersion" : "1884059829",
+    "uid" : "f3062a2b-4999-443d-af34-7a3a62f1cbc9"
+  },
+  "spec" : {
+    "host" : "soapservice-rchhabri-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com",
+    "port" : {
+      "targetPort" : 8080
+    },
+    "to" : {
+      "kind" : "Service",
+      "name" : "soapservice",
+      "weight" : 100
+    },
+    "wildcardPolicy" : "None"
+  },
+  "status" : {
+    "ingress" : [ {
+      "conditions" : [ {
+        "lastTransitionTime" : "2022-12-28T10:43:25Z",
+        "status" : "True",
+        "type" : "Admitted"
+      } ],
+      "host" : "soapservice-rchhabri-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com",
+      "routerCanonicalHostname" : "router-default.apps.sandbox-m2.ll9k.p1.openshiftapps.com",
+      "routerName" : "default",
+      "wildcardPolicy" : "None"
+    } ]
+  }
+}

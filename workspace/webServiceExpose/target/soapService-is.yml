@@ -1,0 +1,15 @@
+---
+apiVersion: v1
+kind: List
+items:
+- apiVersion: image.openshift.io/v1
+  kind: ImageStream
+  metadata:
+    name: soapservice
+  spec:
+    tags:
+    - from:
+        kind: ImageStreamImage
+        name: soapservice@sha256:587ab9888f7bf0290c4893790d6365247eb026531ececbfb94dbb4dbbfc0cea3
+        namespace: rchhabri-dev
+      name: latest

@@ -1,0 +1,118 @@
+---
+apiVersion: v1
+kind: List
+items:
+- apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+      prometheus.io/path: /metrics
+      prometheus.io/port: "9779"
+      prometheus.io/scrape: "true"
+    labels:
+      expose: "true"
+      app: restCreateCustomer
+      provider: jkube
+      version: 1.0.0-SNAPSHOT
+      group: org.mycompany
+    name: restcreatecustomer
+  spec:
+    ports:
+    - name: http
+      port: 8080
+      protocol: TCP
+      targetPort: 8080
+    selector:
+      app: restCreateCustomer
+      provider: jkube
+      group: org.mycompany
+- apiVersion: apps.openshift.io/v1
+  kind: DeploymentConfig
+  metadata:
+    labels:
+      app: restCreateCustomer
+      provider: jkube
+      version: 1.0.0-SNAPSHOT
+      group: org.mycompany
+    name: restcreatecustomer
+  spec:
+    replicas: 1
+    revisionHistoryLimit: 2
+    selector:
+      app: restCreateCustomer
+      provider: jkube
+      group: org.mycompany
+    strategy:
+      rollingParams:
+        timeoutSeconds: 3600
+      type: Rolling
+    template:
+      metadata:
+        labels:
+          app: restCreateCustomer
+          provider: jkube
+          version: 1.0.0-SNAPSHOT
+          group: org.mycompany
+      spec:
+        containers:
+        - env:
+          - name: KUBERNETES_NAMESPACE
+            valueFrom:
+              fieldRef:
+                fieldPath: metadata.namespace
+          image: restcreatecustomer:latest
+          imagePullPolicy: IfNotPresent
+          livenessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /actuator/health
+              port: 8081
+              scheme: HTTP
+            initialDelaySeconds: 180
+            successThreshold: 1
+          name: spring-boot
+          ports:
+          - containerPort: 8080
+            name: http
+            protocol: TCP
+          - containerPort: 9779
+            name: prometheus
+            protocol: TCP
+          - containerPort: 8778
+            name: jolokia
+            protocol: TCP
+          readinessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /actuator/health
+              port: 8081
+              scheme: HTTP
+            initialDelaySeconds: 10
+            successThreshold: 1
+          securityContext:
+            privileged: false
+    triggers:
+    - type: ConfigChange
+    - imageChangeParams:
+        automatic: true
+        containerNames:
+        - spring-boot
+        from:
+          kind: ImageStreamTag
+          name: restcreatecustomer:latest
+      type: ImageChange
+- apiVersion: route.openshift.io/v1
+  kind: Route
+  metadata:
+    labels:
+      app: restCreateCustomer
+      provider: jkube
+      version: 1.0.0-SNAPSHOT
+      group: org.mycompany
+    name: restcreatecustomer
+  spec:
+    port:
+      targetPort: 8080
+    to:
+      kind: Service
+      name: restcreatecustomer

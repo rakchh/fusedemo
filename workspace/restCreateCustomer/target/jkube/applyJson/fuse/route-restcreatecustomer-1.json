@@ -1,0 +1,60 @@
+{
+  "apiVersion" : "route.openshift.io/v1",
+  "kind" : "Route",
+  "metadata" : {
+    "creationTimestamp" : "2023-01-24T09:22:32Z",
+    "labels" : {
+      "app" : "restCreateCustomer",
+      "group" : "org.mycompany",
+      "provider" : "jkube",
+      "version" : "1.0.0-SNAPSHOT"
+    },
+    "managedFields" : [ {
+      "apiVersion" : "route.openshift.io/v1",
+      "fieldsType" : "FieldsV1",
+      "fieldsV1" : {
+        "f:metadata" : {
+          "f:labels" : {
+            "." : { },
+            "f:app" : { },
+            "f:group" : { },
+            "f:provider" : { },
+            "f:version" : { }
+          }
+        },
+        "f:spec" : {
+          "f:port" : {
+            "." : { },
+            "f:targetPort" : { }
+          },
+          "f:to" : {
+            "f:kind" : { },
+            "f:name" : { },
+            "f:weight" : { }
+          },
+          "f:wildcardPolicy" : { }
+        }
+      },
+      "manager" : "okhttp",
+      "operation" : "Update",
+      "time" : "2023-01-24T09:22:32Z"
+    } ],
+    "name" : "restcreatecustomer",
+    "namespace" : "fuse",
+    "resourceVersion" : "275612",
+    "uid" : "7622e0b9-0f93-42f6-ab91-14b328cac579"
+  },
+  "spec" : {
+    "host" : "restcreatecustomer-fuse.apps.cluster-tw8t8.tw8t8.sandbox355.opentlc.com",
+    "port" : {
+      "targetPort" : 8080
+    },
+    "to" : {
+      "kind" : "Service",
+      "name" : "restcreatecustomer",
+      "weight" : 100
+    },
+    "wildcardPolicy" : "None"
+  },
+  "status" : { }
+}

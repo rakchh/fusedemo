@@ -1,0 +1,84 @@
+{
+  "apiVersion" : "route.openshift.io/v1",
+  "kind" : "Route",
+  "metadata" : {
+    "creationTimestamp" : "2023-01-05T07:38:09Z",
+    "labels" : {
+      "app" : "restCreateCustomer",
+      "group" : "org.mycompany",
+      "provider" : "jkube",
+      "version" : "1.0.0-SNAPSHOT"
+    },
+    "managedFields" : [ {
+      "apiVersion" : "route.openshift.io/v1",
+      "fieldsType" : "FieldsV1",
+      "fieldsV1" : {
+        "f:metadata" : {
+          "f:labels" : {
+            "." : { },
+            "f:app" : { },
+            "f:group" : { },
+            "f:provider" : { },
+            "f:version" : { }
+          }
+        },
+        "f:spec" : {
+          "f:port" : {
+            "." : { },
+            "f:targetPort" : { }
+          },
+          "f:to" : {
+            "f:kind" : { },
+            "f:name" : { },
+            "f:weight" : { }
+          },
+          "f:wildcardPolicy" : { }
+        }
+      },
+      "manager" : "okhttp",
+      "operation" : "Update",
+      "time" : "2023-01-05T07:38:09Z"
+    }, {
+      "apiVersion" : "route.openshift.io/v1",
+      "fieldsType" : "FieldsV1",
+      "fieldsV1" : {
+        "f:status" : {
+          "f:ingress" : { }
+        }
+      },
+      "manager" : "openshift-router",
+      "operation" : "Update",
+      "time" : "2023-01-05T07:38:09Z",
+      "subresource" : "status"
+    } ],
+    "name" : "restcreatecustomer",
+    "namespace" : "fuse",
+    "resourceVersion" : "88816",
+    "uid" : "b0899c62-0f8b-42cd-9b6b-60d5a86d0195"
+  },
+  "spec" : {
+    "host" : "restcreatecustomer-fuse.apps.cluster-4xrmx.4xrmx.sandbox702.opentlc.com",
+    "port" : {
+      "targetPort" : 8080
+    },
+    "to" : {
+      "kind" : "Service",
+      "name" : "restcreatecustomer",
+      "weight" : 100
+    },
+    "wildcardPolicy" : "None"
+  },
+  "status" : {
+    "ingress" : [ {
+      "conditions" : [ {
+        "lastTransitionTime" : "2023-01-05T07:38:09Z",
+        "status" : "True",
+        "type" : "Admitted"
+      } ],
+      "host" : "restcreatecustomer-fuse.apps.cluster-4xrmx.4xrmx.sandbox702.opentlc.com",
+      "routerCanonicalHostname" : "router-default.apps.cluster-4xrmx.4xrmx.sandbox702.opentlc.com",
+      "routerName" : "default",
+      "wildcardPolicy" : "None"
+    } ]
+  }
+}

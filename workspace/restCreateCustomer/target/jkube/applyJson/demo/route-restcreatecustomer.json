@@ -1,0 +1,84 @@
+{
+  "apiVersion" : "route.openshift.io/v1",
+  "kind" : "Route",
+  "metadata" : {
+    "creationTimestamp" : "2023-01-29T17:07:56Z",
+    "labels" : {
+      "app" : "restCreateCustomer",
+      "group" : "org.mycompany",
+      "provider" : "jkube",
+      "version" : "1.0.0-SNAPSHOT"
+    },
+    "managedFields" : [ {
+      "apiVersion" : "route.openshift.io/v1",
+      "fieldsType" : "FieldsV1",
+      "fieldsV1" : {
+        "f:metadata" : {
+          "f:labels" : {
+            "." : { },
+            "f:app" : { },
+            "f:group" : { },
+            "f:provider" : { },
+            "f:version" : { }
+          }
+        },
+        "f:spec" : {
+          "f:port" : {
+            "." : { },
+            "f:targetPort" : { }
+          },
+          "f:to" : {
+            "f:kind" : { },
+            "f:name" : { },
+            "f:weight" : { }
+          },
+          "f:wildcardPolicy" : { }
+        }
+      },
+      "manager" : "okhttp",
+      "operation" : "Update",
+      "time" : "2023-01-29T17:07:56Z"
+    }, {
+      "apiVersion" : "route.openshift.io/v1",
+      "fieldsType" : "FieldsV1",
+      "fieldsV1" : {
+        "f:status" : {
+          "f:ingress" : { }
+        }
+      },
+      "manager" : "openshift-router",
+      "operation" : "Update",
+      "time" : "2023-01-29T17:07:56Z",
+      "subresource" : "status"
+    } ],
+    "name" : "restcreatecustomer",
+    "namespace" : "demo",
+    "resourceVersion" : "89966",
+    "uid" : "58ecf34d-fb82-486c-81fe-4d6b7223ede8"
+  },
+  "spec" : {
+    "host" : "restcreatecustomer-demo.apps.cluster-8kktm.8kktm.sandbox2813.opentlc.com",
+    "port" : {
+      "targetPort" : 8080
+    },
+    "to" : {
+      "kind" : "Service",
+      "name" : "restcreatecustomer",
+      "weight" : 100
+    },
+    "wildcardPolicy" : "None"
+  },
+  "status" : {
+    "ingress" : [ {
+      "conditions" : [ {
+        "lastTransitionTime" : "2023-01-29T17:07:56Z",
+        "status" : "True",
+        "type" : "Admitted"
+      } ],
+      "host" : "restcreatecustomer-demo.apps.cluster-8kktm.8kktm.sandbox2813.opentlc.com",
+      "routerCanonicalHostname" : "router-default.apps.cluster-8kktm.8kktm.sandbox2813.opentlc.com",
+      "routerName" : "default",
+      "wildcardPolicy" : "None"
+    } ]
+  }
+}
